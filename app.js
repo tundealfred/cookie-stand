@@ -42,7 +42,7 @@ function randomNumber(min, max) {
 
 // create our first shop
 const seattle = {
-  location: "seattle",
+  location: "Seattle",
   minCust: 23,
   maxCust: 65,
   avgCookiesPerCust: 6.3,
@@ -70,4 +70,4 @@ const h2 = document.createElement("h2");
 h2.textContent = seattle.location;
 article.appendChild(h2);
 
-displaySalesData.appendChild(articcle);
+displaySalesData.appendChild(article);
