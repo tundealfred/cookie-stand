@@ -1,22 +1,25 @@
-// function randomNumber(min, max) {
-//   return Math.floor(Math.random() * (max - min + 1)) + min;
-// }
+function CookieShops(location, minCust, maxCust, avgCookiesPerCust) {
+  this.location = location;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgCookiesPerCust = avgCookiesPerCust;
+  this.customersPerHour = [];
+  this.cookiesPerHour = [];
+  this.totalCookieSold = 0;
+}
 
-// const seattle = {
-//   location: "seattle",
-//   minCust: 23,
-//   maxCust: 65,
-//   avgCookiesPerCust: 6.3,
-//   custPerHour: [],
-//   cookiesPerHour: [],
-//   generateSales: function () {
-//     return (
-//       Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) +
-//       this.minCust
-//     );
-//   },
-//   totalCookiesSold: 0,
-// };
+CookieShops.prototype.calculateSales = function () {
+  for (let i = 0; i < hours.length; i++) {
+    const randNum = randomNumber(this.minCust, this.maxCust);
+    this.customersPerHour.push(randNum);
+    this.cookiesPerHour.push(Math.floor(randNum * this.avgCookiesPerCust));
+    this.totalCookieSold += this.cookiesPerHour[i];
+  }
+};
+
+function randomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 const hours = [
   "6am",
@@ -35,39 +38,40 @@ const hours = [
   "7pm",
 ];
 
-// give a random number between two numbers
-function randomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+CookieShops.prototype.render = function () {
+  this.calculateSales();
 
-// create our first shop
-const seattle = {
-  location: "Seattle",
-  minCust: 23,
-  maxCust: 65,
-  avgCookiesPerCust: 6.3,
-  customersPerHour: [],
-  cookiesPerHour: [],
-  totalCookieSold: 0,
-  calculateSales: function () {
-    // add a random number to the customersPerHour array
-    for (let i = 0; i < hours.length; i++) {
-      const randNum = randomNumber(this.minCust, this.maxCust);
-      this.customersPerHour.push(randNum);
-      this.cookiesPerHour.push(randNum * this.avgCookiesPerCust);
-    }
-  },
+  //seattle.calculateSales();
+  //tokyo.calculateSales();
+
+  // Display the data for Seattle
+  const displaySalesData = document.getElementById("displaySalesData");
+  const article = document.createElement("article");
+
+  const h2 = document.createElement("h2");
+  h2.textContent = this.location;
+  article.appendChild(h2);
+
+  const ul = document.createElement("ul");
+  for (let i = 0; i < hours.length; i++) {
+    const li = document.createElement("li");
+    li.textContent = `${hours[i]}  :  ${this.cookiesPerHour[i]} Cookies`;
+    ul.appendChild(li);
+  }
+  article.appendChild(ul);
+
+  displaySalesData.appendChild(article);
 };
 
-seattle.calculateSales();
-console.log(seattle);
+// Create instances for each shop
+const seattle = new CookieShops("Seattle", 23, 65, 6.3);
+const tokyo = new CookieShops("Tokyo", 3, 24, 1.2);
+const dubai = new CookieShops("Dubai", 11, 38, 3.7);
+const paris = new CookieShops("Paris", 20, 38, 2.3);
+const lima = new CookieShops("Lima", 2, 16, 4.6);
 
-const displaySalesData = document.getElementById("displaySalesData");
-
-const article = document.createElement("article");
-
-const h2 = document.createElement("h2");
-h2.textContent = seattle.location;
-article.appendChild(h2);
-
-displaySalesData.appendChild(article);
+seattle.render();
+tokyo.render();
+dubai.render();
+paris.render();
+lima.render();
