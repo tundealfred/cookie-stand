@@ -4,34 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cookie Stand</title>
+    <link rel="stylesheet" href="style.css" />
     <script src="./app.js" defer></script>
   </head>
   <body>
     <header>
       <h1>The Cookie Stand</h1>
     </header>
-    <form>
+    <form id="cookieStandForm">
       <fieldset>
         <legend>Add Another Shop Location</legend>
         <div>
           <label for="location">Location</label>
-          <input name="location" type="text" />
+          <input name="location" type="text" id="location" required />
         </div>
         <div>
           <label for="minCust">Min. Customers</label>
-          <input name="minCust" type="text" />
+          <input name="minCust" type="number" id="minCust" required />
         </div>
         <div>
           <label for="maxCust">Max. Customers</label>
-          <input name="maxCust" type="text" />
+          <input name="maxCust" type="number" id="maxCust" required />
         </div>
         <div>
           <label for="avgCookies">Avg. Cookies</label>
-          <input name="avgCookies" type="text" />
+          <input
+            name="avgCookies"
+            type="number"
+            step="0.1"
+            id="avgCookies"
+            required
+          />
         </div>
-        <!-- <input name="minCust" type="text" /> -->
-        <!-- <input name="maxCust" type="text" /> -->
-        <!-- <input name="Average" type="text" /> -->
+        <button type="submit">Add Cookie Stand</button>
       </fieldset>
     </form>
     <main>

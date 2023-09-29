@@ -96,3 +96,26 @@ tokyo.render();
 dubai.render();
 paris.render();
 lima.render();
+
+const cookieStandForm = document.getElementById("cookieStandForm"); // Connection to the Form
+
+cookieStandForm.addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevent the default form submission behavior
+
+  // Get input values from the form
+  const locationInput = document.getElementById("location");
+  const minCustInput = document.getElementById("minCust");
+  const maxCustInput = document.getElementById("maxCust");
+  const avgCookiesPerCustInput = document.getElementById("avgCookies");
+
+  // Create a new instance of CookieShops with form input values
+  const newCookieStand = new CookieShops(
+    locationInput.value,
+    parseInt(minCustInput.value),
+    parseInt(maxCustInput.value),
+    parseFloat(avgCookiesPerCustInput.value)
+  );
+
+  // Render the new instance
+  newCookieStand.render();
+});

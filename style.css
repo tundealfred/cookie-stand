@@ -1,5 +1,6 @@
 table {
   font-family: monospace;
+  padding: 20px;
 }
 
 tr:nth-child(odd) {
@@ -18,4 +19,13 @@ th {
 
 td {
   padding: 8px;
+}
+div {
+  padding: 5px;
+}
+
+legend {
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: center;
 }
